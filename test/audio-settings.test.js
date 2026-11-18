@@ -14,6 +14,17 @@ test('eleven settings get progressively more brutal without exceeding safe node 
   assert.ok(loud.compressorThresholdDb <= -6);
 });
 
+test('zero is genuinely silent', () => {
+  assert.equal(elevenSettings(0).outputGain, 0);
+});
+
+test('eleven is a cliff, not one more polite increment', () => {
+  const ten = elevenSettings(10);
+  const eleven = elevenSettings(11);
+  assert.ok(eleven.drive >= ten.drive * 4);
+  assert.ok(eleven.preGainDb - ten.preGainDb >= 12);
+});
+
 test('eleven settings reject knob positions beyond the sacred range', () => {
   assert.throws(() => elevenSettings(-1), RangeError);
   assert.throws(() => elevenSettings(12), RangeError);

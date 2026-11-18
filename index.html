@@ -8,30 +8,44 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <main class="amp">
-      <p class="eyebrow">A totally unofficial fan-built volume incident</p>
-      <h1>Dial to <span>Eleven</span></h1>
-      <p class="lede">Feed it a track. Turn the sacred knob. Discover why sensible engineers stop at ten.</p>
-
-      <label class="file-picker" for="audio-file">
-        <span>Load a track</span>
-        <input id="audio-file" type="file" accept="audio/*" />
-      </label>
-      <p id="file-name" class="file-name">No file. No glory.</p>
-
-      <section class="cabinet" aria-label="The loudness controls">
-        <label class="knob-label" for="eleven-knob">How much eleven?</label>
-        <input id="eleven-knob" type="range" min="0" max="11" value="0" step="1" />
-        <output id="knob-readout" for="eleven-knob">0</output>
-        <p id="mode-readout" class="mode-readout">Civilized-ish</p>
-      </section>
-
-      <div class="controls">
-        <button id="play-button" type="button" disabled>Play it loud</button>
-        <button id="stop-button" type="button" disabled>Stop the madness</button>
+    <div class="stage-lights" aria-hidden="true"><i></i><i></i><i></i></div>
+    <main class="amp" id="amp">
+      <div class="light-rig" aria-hidden="true">
+        <span class="lamp white"></span><span class="lamp amber"></span><span class="lamp white"></span><span class="lamp magenta"></span><span class="lamp white"></span><span class="lamp blue"></span><span class="lamp white"></span><span class="lamp red"></span>
       </div>
-      <p class="warning">⚠ Start low. This adds compression, distortion, and bite; it does not negotiate with your headphones.</p>
-      <p class="fine-print">Runs entirely in your browser. Nothing gets uploaded. Not affiliated with Spinal Tap or any people who may own an amp that goes to eleven.</p>
+      <div class="amp-panel">
+        <section class="amp-copy">
+          <p class="eyebrow">A totally unofficial fan-built volume incident</p>
+          <h1 class="music-reactive">Dial to <span>Eleven</span></h1>
+          <p class="lede music-reactive">Plug in a track. Turn the sacred knob. Ten is for other people.</p>
+          <div class="jack-row">
+            <span class="input-jack" aria-hidden="true"><span></span></span>
+            <label class="file-picker" for="audio-file">Plug in a track<input id="audio-file" type="file" accept="audio/*" /></label>
+          </div>
+          <p id="file-name" class="file-name music-reactive">No file. No glory.</p>
+          <div class="controls">
+            <button id="play-button" type="button" disabled>Play it loud</button>
+            <button id="stop-button" type="button" disabled>Stop the madness</button>
+          </div>
+          <p class="warning">Start with your volume low. Eleven can bite.</p>
+        </section>
+        <section class="cabinet" aria-label="The loudness controls">
+          <span class="knob-label music-reactive" id="knob-label">How much eleven?</span>
+          <div class="dial-ring" id="dial-ring">
+            <div id="eleven-knob" class="dial" role="slider" tabindex="0" aria-labelledby="knob-label" aria-valuemin="0" aria-valuemax="11" aria-valuenow="0" aria-valuetext="Suspicious silence" aria-description="Turn by dragging around the dial or use arrow keys.">
+              <div class="dial-face" aria-hidden="true"></div>
+            </div>
+          </div>
+          <div class="meter"><output id="knob-readout" class="music-reactive">0</output><p id="mode-readout" class="mode-readout music-reactive">Suspicious silence</p></div>
+          <p class="dial-hint">Drag to turn · arrow keys too</p>
+        </section>
+      </div>
+      <div class="speaker-grill" aria-hidden="true">
+        <div class="speaker-cone"></div><div class="speaker-cone second"></div>
+        <div class="amp-badge music-reactive">DIAL TO ELEVEN <small id="stage-caption">THE DRUMMER CAN HEAR HIMSELF THINK</small></div>
+        <div class="cable"></div>
+      </div>
+      <p class="fine-print">Private by design: your audio never leaves this browser. Unofficial fan project; not affiliated with Spinal Tap or its rights holders.</p>
     </main>
     <script type="module" src="src/app.js"></script>
   </body>

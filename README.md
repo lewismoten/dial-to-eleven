@@ -2,16 +2,16 @@
 
 > **A browser-based loudness incident for people who know ten is merely where the other knobs stop.**
 
-Load an audio file, twist the sacred dial, and subject it to increasing amounts of gain, compression, saturation, and high-mid bite. It runs on your machine, in your browser, and does not ship your precious riffs off to a server in a tiny black van.
+Load an audio file, click a number or turn the rotary dial by dragging/arrow keys, and subject it to increasing amounts of gain, compression, saturation, and high-mid bite. **Zero is silent. Eleven is deliberately a cliff beyond ten**: much more preamp gain and wave-shaping. White and colored bulbs along the amp's top frame blink and sweep their beams down the cabinet. While a track plays at eleven, the text and cabinet jolt in different directions from *live audio samples*, the speaker cones throb, occasional blur and fake smoke roll in, and the badge issues increasingly unhelpful warnings (unless you prefer reduced motion). It runs on your machine, in your browser, and does not ship your precious riffs off to a server in a tiny black van.
 
 ## What the knob does
 
 | Dial | Officially irresponsible technical behavior |
 | --- | --- |
-| 0 | Civilized-ish. Your parents may remain in the room. |
+| 0 | Nothing. Actual silence. The drummer can have a moment. |
 | 1–5 | More gain, more density, a little edge around the moustache. |
 | 6–10 | Compression starts leaning on the doorbell and distortion answers it. |
-| 11 | Gain, saturation, and limiter pressure in a tasteful-yet-questionable wall of sound. |
+| 11 | A huge jump in preamp gain and saturation, extra compression, shaking lettering, and an amp that has clearly lost the plot. |
 
 It is not a magic way to make speakers exceed their physical limit. It is a deliberately aggressive *perceived loudness* effect, which means dynamic range gets squeezed and the waveform gets rougher. That is the point. Mostly.
 

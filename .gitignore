@@ -1,0 +1,8 @@
+# The band's recordings do not belong in the road crew's source-control case.
+*.mp3
+*.wav
+*.aiff
+*.aif
+*.flac
+*.m4a
+*.ogg
