@@ -9,18 +9,22 @@
   </head>
   <body>
     <div class="stage-lights" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="stage" id="stage">
+      <div class="stage-effects" aria-hidden="true">
+        <div class="fog-wing fog-left"><i></i><i></i><i></i></div>
+        <div class="fog-wing fog-right"><i></i><i></i><i></i></div>
+        <canvas class="pyro-canvas" id="pyro-canvas" aria-hidden="true"></canvas>
+      </div>
     <main class="amp" id="amp">
       <div class="light-rig" aria-hidden="true">
         <span class="lamp white"></span><span class="lamp amber"></span><span class="lamp white"></span><span class="lamp magenta"></span><span class="lamp white"></span><span class="lamp blue"></span><span class="lamp white"></span><span class="lamp red"></span>
       </div>
-      <div class="pyro-rig" aria-hidden="true"><span class="pyro-jet"></span><span class="pyro-jet"></span><span class="pyro-jet"></span><span class="pyro-jet"></span></div>
       <div class="amp-panel">
         <section class="amp-copy">
           <p class="eyebrow">A totally unofficial fan-built volume incident</p>
           <h1 class="music-reactive">Dial to <span>Eleven</span></h1>
-          <div class="message-slot" aria-live="off"><p id="rolling-message" class="lede music-reactive">The dial has no indoor voice.</p></div>
           <div class="jack-row">
-            <span class="input-jack" aria-hidden="true"><span></span></span>
+            <label class="input-jack" for="audio-file" aria-label="Choose an audio track from the input jack"><span aria-hidden="true"></span></label>
             <label class="file-picker" for="audio-file">Plug in a track<input id="audio-file" type="file" accept="audio/*" /></label>
           </div>
           <p id="file-name" class="file-name music-reactive">No file. No glory.</p>
@@ -31,24 +35,25 @@
           <p class="warning">Start with your volume low. Eleven can bite.</p>
         </section>
         <section class="cabinet" aria-label="The loudness controls">
-          <span class="knob-label music-reactive" id="knob-label">How much eleven?</span>
+          <span class="knob-label music-reactive" id="knob-label">Why not eleven?</span>
           <div class="dial-ring" id="dial-ring">
             <div id="eleven-knob" class="dial" role="slider" tabindex="0" aria-labelledby="knob-label" aria-valuemin="0" aria-valuemax="11" aria-valuenow="0" aria-valuetext="Suspicious silence" aria-description="Turn by dragging around the dial or use arrow keys.">
               <div class="dial-face" aria-hidden="true"></div>
             </div>
           </div>
-          <div class="meter"><output id="knob-readout" class="music-reactive">0</output><p id="mode-readout" class="mode-readout music-reactive">Suspicious silence</p></div>
+          <div class="meter"><output id="knob-readout" class="music-reactive">3</output><p id="mode-readout" class="mode-readout music-reactive">Polite warning ignored</p></div>
+          <button id="more-eleven" type="button" aria-pressed="false" hidden>More eleven</button>
           <p class="dial-hint">Drag to turn · arrow keys too</p>
         </section>
       </div>
-      <div class="speaker-grill" aria-hidden="true">
-        <div class="speaker-cone"></div><div class="speaker-cone second"></div>
-        <div class="floor-fog" aria-hidden="true"><span></span><span></span><span></span></div>
-        <div class="amp-badge music-reactive">DIAL TO ELEVEN <small id="stage-caption">THE DRUMMER CAN HEAR HIMSELF THINK</small></div>
-        <div class="cable"></div>
+      <div class="speaker-grill">
+        <div class="speaker-cone" aria-hidden="true"></div><div class="speaker-cone second" aria-hidden="true"></div>
+        <div class="amp-badge">THE LOUDNESS DEPARTMENT <span id="rolling-message" class="badge-message" aria-live="off" hidden>The dial has no indoor voice.</span></div>
+        <div class="cable" aria-hidden="true"></div>
       </div>
       <p class="fine-print">Private by design: your audio never leaves this browser. Unofficial fan project; not affiliated with Spinal Tap or its rights holders.</p>
     </main>
+    </div>
     <script type="module" src="src/app.js"></script>
   </body>
 </html>

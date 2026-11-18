@@ -1,10 +1,3 @@
-const warnings = [
-  'THE WARRANTY HAS LEFT THE ROOM',
-  'THE TROUSERS HAVE FILED A COMPLAINT',
-  'THE WALLS ARE REQUESTING EARPLUGS',
-  'THE ROAD CREW DENIES EVERYTHING',
-];
-
 const tourBus = [
   'The dial has no indoor voice.',
   'Please keep all trousers inside the venue.',
@@ -53,19 +46,26 @@ const elevenOnly = [
   'The dial has left the building. It took the building.',
 ];
 
-export const messageCount = tourBus.length;
+const stageMessages = [...elevenOnly, ...tourBus];
+export const messageCount = stageMessages.length;
 
 export function rollingMessage(level, tick) {
-  const messages = level === 11 ? elevenOnly : tourBus;
+  const messages = level === 11 ? stageMessages : tourBus;
   return messages[Math.floor(tick) % messages.length];
 }
 
-export function pyroVisible(level, reducedMotion) {
-  return level === 11 && !reducedMotion;
+export function badgeMessageVisible(level) {
+  return level === 11;
 }
 
-export function stageLine(level, beat) {
-  if (level === 0) return 'THE DRUMMER CAN HEAR HIMSELF THINK';
-  if (level !== 11) return 'LOUDER THAN NECESSARY';
-  return warnings[Math.floor(beat) % warnings.length];
+export function dialPrompt(level) {
+  return level === 11 ? 'How much eleven?' : 'Why not eleven?';
+}
+
+export function fogIntensity(level, playing) {
+  return playing ? Math.max(0, Math.min(11, level)) / 11 : 0;
+}
+
+export function pyroVisible(level, playing, reducedMotion) {
+  return level === 11 && playing && !reducedMotion;
 }

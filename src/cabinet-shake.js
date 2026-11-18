@@ -8,8 +8,12 @@ export function cabinetShake(samples, level, playing, reducedMotion = false) {
   return Math.min(3, Math.sqrt(energy / samples.length) * 4);
 }
 
-export function cabinetMotion(samples, level, playing, reducedMotion = false) {
-  const energy = cabinetShake(samples, level, playing, reducedMotion);
+export function jackMotion(motion) {
+  return { x: motion.textX === 0 ? 0 : -motion.textX * 1.4, y: motion.cabinetY * 1.6 };
+}
+
+export function cabinetMotion(samples, level, playing, reducedMotion = false, moreEleven = false) {
+  const energy = cabinetShake(samples, level, playing, reducedMotion) * (moreEleven && level === 11 ? 2.35 : 1);
   const still = { textX: 0, textY: 0, cabinetX: 0, cabinetY: 0, blur: 0 };
   if (energy === 0) return still;
   const sample = (fraction) => (samples[Math.floor(samples.length * fraction)] - 128) / 128;

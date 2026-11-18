@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { cabinetShake, cabinetMotion } from '../src/cabinet-shake.js';
+import { cabinetShake, cabinetMotion, jackMotion } from '../src/cabinet-shake.js';
 
 test('the cabinet stays still unless the record is playing at eleven', () => {
   const signal = Uint8Array.from([128, 0, 255]);
@@ -25,5 +25,25 @@ test('text and cabinet move differently in response to changing samples', () => 
   assert.ok(a.blur > 0);
   assert.deepEqual(cabinetMotion(Uint8Array.from([128, 128, 128, 128]), 11, true), { textX: 0, textY: 0, cabinetX: 0, cabinetY: 0, blur: 0 });
   assert.deepEqual(cabinetMotion(Uint8Array.from([0, 255, 0, 255]), 11, true, true), { textX: 0, textY: 0, cabinetX: 0, cabinetY: 0, blur: 0 });
+});
+
+test('more eleven makes every live motion channel wilder but never shakes silence', () => {
+  const signal = Uint8Array.from([0, 255, 0, 255]);
+  const ordinary = cabinetMotion(signal, 11, true);
+  const extra = cabinetMotion(signal, 11, true, false, true);
+  assert.ok(Math.abs(extra.textX) > Math.abs(ordinary.textX));
+  assert.ok(Math.abs(extra.cabinetY) > Math.abs(ordinary.cabinetY));
+  assert.ok(Math.abs(jackMotion(extra).x) > Math.abs(jackMotion(ordinary).x));
+  assert.deepEqual(cabinetMotion(signal, 11, false, false, true), { textX: 0, textY: 0, cabinetX: 0, cabinetY: 0, blur: 0 });
+  assert.deepEqual(cabinetMotion(signal, 11, true, true, true), { textX: 0, textY: 0, cabinetX: 0, cabinetY: 0, blur: 0 });
+});
+
+test('the input jack rattles independently only while music plays at eleven', () => {
+  const live = cabinetMotion(Uint8Array.from([0, 255, 0, 255]), 11, true);
+  const jack = jackMotion(live);
+  assert.notEqual(jack.x, 0);
+  assert.notEqual(jack.x, live.textX);
+  assert.notEqual(jack.y, live.cabinetY);
+  assert.deepEqual(jackMotion(cabinetMotion(Uint8Array.from([0, 255, 0, 255]), 11, false)), { x: 0, y: 0 });
 });
 
