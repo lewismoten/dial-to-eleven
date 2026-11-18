@@ -2,10 +2,11 @@ import { elevenSettings } from './audio-settings.js';
 import { connectInput, distortionCurve } from './audio-graph.js';
 import { levelFromPointer, levelFromKey } from './dial.js';
 import { cabinetMotion } from './cabinet-shake.js';
-import { stageLine } from './stage-directions.js';
+import { stageLine, rollingMessage, pyroVisible } from './stage-directions.js';
 
 const amp = document.querySelector('#amp');
 const stageCaption = document.querySelector('#stage-caption');
+const rollingMessageEl = document.querySelector('#rolling-message');
 
 const fileInput = document.querySelector('#audio-file');
 const fileName = document.querySelector('#file-name');
@@ -31,6 +32,8 @@ let animationFrame = 0;
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 let loaded = false;
 let level = 0;
+let lastMessageLevel = -1;
+let messageTick = 0;
 
 function initializeRack() {
   if (audioContext) return;
@@ -90,7 +93,24 @@ for (let number = 0; number <= 11; number += 1) {
   dialRing.append(label);
 }
 
+function showRollingMessage() {
+  const text = rollingMessage(level, messageTick);
+  if (rollingMessageEl.textContent === text) return;
+  rollingMessageEl.textContent = text;
+  if (!reducedMotion.matches) {
+    rollingMessageEl.classList.remove('rolling-in');
+    void rollingMessageEl.offsetWidth;
+    rollingMessageEl.classList.add('rolling-in');
+  }
+}
+
 function updatePanel() {
+  if (level !== lastMessageLevel) {
+    messageTick = 0;
+    lastMessageLevel = level;
+    showRollingMessage();
+  }
+  amp.classList.toggle('pyro-on', pyroVisible(level, reducedMotion.matches));
   readout.textContent = level;
   modeReadout.textContent = modes[level];
   stageCaption.textContent = stageLine(level, source ? Math.floor(source.currentTime / 2.5) : 0);
@@ -200,6 +220,8 @@ playButton.addEventListener('click', async () => {
 });
 
 stopButton.addEventListener('click', stopPlayback);
+reducedMotion.addEventListener('change', updatePanel);
+window.setInterval(() => { messageTick += 1; showRollingMessage(); }, 3600);
 window.addEventListener('beforeunload', () => { if (objectUrl) URL.revokeObjectURL(objectUrl); });
 
 updatePanel();
