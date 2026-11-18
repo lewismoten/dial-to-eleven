@@ -1,0 +1,21 @@
+:root { color-scheme: dark; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; background: #100008; color: #ffe6c9; }
+* { box-sizing: border-box; }
+body { min-height: 100vh; margin: 0; display: grid; place-items: center; background: radial-gradient(circle at 50% -15%, #9a172f 0, #26000f 32%, #100008 70%); }
+.amp { width: min(42rem, calc(100% - 2rem)); padding: clamp(1.5rem, 7vw, 4rem); border: 3px solid #eaac52; border-radius: 1.2rem; background: linear-gradient(145deg, #321009, #170006 70%); box-shadow: 0 0 0 7px #230009, 0 1.5rem 5rem #000; text-align: center; }
+.eyebrow, .fine-print { font-family: system-ui, sans-serif; letter-spacing: .08em; text-transform: uppercase; font-size: .68rem; color: #eaa94c; }
+h1 { margin: .2rem 0; font-size: clamp(3.5rem, 15vw, 7.5rem); text-transform: uppercase; letter-spacing: -.05em; line-height: .85; text-shadow: .1em .1em #72001f; }
+h1 span { color: #ffb00e; display: block; }
+.lede { font-family: system-ui, sans-serif; max-width: 35rem; margin: 1.5rem auto; line-height: 1.5; }
+.file-picker, button { display: inline-block; cursor: pointer; border: 2px solid #ffd174; background: #f5a611; color: #24000a; padding: .8rem 1.1rem; font: inherit; text-transform: uppercase; letter-spacing: .05em; box-shadow: .22rem .22rem 0 #78001d; }
+.file-picker input { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.file-name { font-family: system-ui, sans-serif; min-height: 1.5em; color: #f6c87b; }
+.cabinet { margin: 2rem auto; padding: 1.2rem; border: 2px inset #71412a; background: #090205; }
+.knob-label { display: block; color: #ffcd5f; text-transform: uppercase; letter-spacing: .1em; }
+input[type='range'] { accent-color: #f5a611; width: min(100%, 27rem); margin: 1.4rem 0 .2rem; }
+output { display: block; color: #ffb00e; font-size: 5rem; line-height: 1; text-shadow: .08em .08em #6a001d; }
+.mode-readout { font-family: system-ui, sans-serif; margin: .4rem 0 0; color: #e9b877; }
+.controls { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+button:disabled { cursor: not-allowed; opacity: .45; }
+button:not(:disabled):hover, .file-picker:hover { filter: brightness(1.15); transform: translate(-1px, -1px); }
+.warning { font-family: system-ui, sans-serif; margin: 2rem 0 0; color: #ffae9e; line-height: 1.5; }
+.fine-print { margin-top: 2rem; line-height: 1.5; text-transform: none; letter-spacing: normal; color: #b98270; }

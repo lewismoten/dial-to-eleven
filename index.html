@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#12000a" />
+    <title>Dial to Eleven</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="amp">
+      <p class="eyebrow">A totally unofficial fan-built volume incident</p>
+      <h1>Dial to <span>Eleven</span></h1>
+      <p class="lede">Feed it a track. Turn the sacred knob. Discover why sensible engineers stop at ten.</p>
+
+      <label class="file-picker" for="audio-file">
+        <span>Load a track</span>
+        <input id="audio-file" type="file" accept="audio/*" />
+      </label>
+      <p id="file-name" class="file-name">No file. No glory.</p>
+
+      <section class="cabinet" aria-label="The loudness controls">
+        <label class="knob-label" for="eleven-knob">How much eleven?</label>
+        <input id="eleven-knob" type="range" min="0" max="11" value="0" step="1" />
+        <output id="knob-readout" for="eleven-knob">0</output>
+        <p id="mode-readout" class="mode-readout">Civilized-ish</p>
+      </section>
+
+      <div class="controls">
+        <button id="play-button" type="button" disabled>Play it loud</button>
+        <button id="stop-button" type="button" disabled>Stop the madness</button>
+      </div>
+      <p class="warning">⚠ Start low. This adds compression, distortion, and bite; it does not negotiate with your headphones.</p>
+      <p class="fine-print">Runs entirely in your browser. Nothing gets uploaded. Not affiliated with Spinal Tap or any people who may own an amp that goes to eleven.</p>
+    </main>
+    <script type="module" src="src/app.js"></script>
+  </body>
+</html>
