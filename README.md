@@ -8,6 +8,12 @@ Load an audio file by clicking the jack or the button, then click a number or tu
 
 *Eleven during playback of a locally selected track. The flames and sparks are pixels, not a venue permit.*
 
+## Why this exists
+
+I went to the last day of a library's annual book sale fundraiser: name-your-price day. CDs normally sold for 50 cents. I spotted *Spinal Tap: Break Like the Wind* with an old Ear Candy markdown sticker still on it, priced at $6.99. I'd watched the movie decades ago and recognized the group immediately. My father was clueless.
+
+I took the CD home and listened. It wasn't what I expected. It needed to make some noise, but nothing in the house had a dial that went past ten. So I built one.
+
 ## What the knob does
 
 | Dial | Officially irresponsible technical behavior |
